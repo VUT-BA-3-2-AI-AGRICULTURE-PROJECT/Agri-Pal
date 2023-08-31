@@ -1,0 +1,5 @@
+Data: 
+Feature Engineering: Identify and extract from the data relevant features like average temperature, precipitation, and soil moisture.
+Calculate yield per acre or another suitable yield metric to use as the label for each dataset entry.
+Historical data was used for training the model.
+The dataset should be divided into training, validation, and test sets.
