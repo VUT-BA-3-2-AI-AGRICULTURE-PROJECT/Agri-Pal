@@ -1,0 +1,51 @@
+Theory part:
+
+Problem Statement:
+Rural farmers lack access to modern farming techniques and real-time information, hindering their success. 
+We suggest using an AI-powered mobile solution to provide knowledge and insights for better agricultural outcomes.
+This approach can help rural communities overcome their challenges and achieve their full potential in farming.
+
+Practical:
+
+Get user's wether:
+# OpenWeatherMap API key
+api_key = '69aec7bc4691535f73f99f24a8971860'
+
+# get location
+city_name = location_data['city']
+country_code = location_data['country']
+
+
+url = f'https://api.openweathermap.org/data/2.5/weather?q={city_name},{country_code}&appid={api_key}'
+
+
+response = requests.get(url)
+
+# Check if the request was successful
+if response.status_code == 200:
+    
+    weather_data = response.json()
+
+    
+    temperature_kelvin = weather_data['main']['temp']
+    temperature_celsius = temperature_kelvin - 273.15  # Convert to Celsius
+    weather_description = weather_data['weather'][0]['description']
+    pressure = weather_data['main']['pressure']
+    humidity = weather_data['main']['humidity']
+    wind_speed = weather_data['wind']['speed']
+    cloud_cover = weather_data['clouds']['all']
+
+
+print(f"Weather in {city_name}, {country_code}:")
+    print(f"Temperature: {temperature_celsius:.2f}°C")
+    print(f"Description: {weather_description.capitalize()}")
+    print(f"Humidity: {humidity}%")
+    print(f"Pressure: {pressure}hPa")
+    print(f"Wind speed:{wind_speed}m/s")
+    print(f"cloud cover:{cloud_cover}%")
+    print('')
+
+
+else:
+    print(f"Failed to retrieve weather data. Status code: {response.status_code}")
+
