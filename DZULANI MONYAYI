@@ -1,0 +1,26 @@
+ESTIMATE PRECIPITATION
+
+def estimate_precipitation_chance( pressure,humidity,cloud_cover, ):
+    
+    humidity_threshold = 0.6
+    cloud_cover_threshold = 0.7
+    pressure_threshold = 1010
+    
+    precipitation_chance = 0
+
+    
+    if humidity >= humidity_threshold:
+        precipitation_chance += 30  
+    if cloud_cover >= cloud_cover_threshold:
+        precipitation_chance += 40  
+    if pressure <= pressure_threshold:
+        precipitation_chance += 20 
+
+    
+    precipitation_chance = min(precipitation_chance, 100)
+
+    return precipitation_chance
+
+
+precipitation_chance = estimate_precipitation_chance( pressure,humidity,cloud_cover,)
+print(f"Estimated Precipitation Chance: {precipitation_chance}%")
